@@ -3,8 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { spawn } = require('child_process');
-const { predict } = require('./controllers/predict');
-const { booknames } = require('./controllers/book_names');
+const { predict } = require('./api/predict');
+const { booknames } = require('./api/book_names');
 const router = require('./Routes/bookpredictionsroutes');
 
 const app = express();

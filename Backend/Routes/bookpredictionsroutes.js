@@ -1,6 +1,6 @@
 const express = require('express');
-const predict = require('../controllers/predict');
-const book_names = require('../controllers/book_names');
+const predict = require('../api/predict');
+const book_names = require('../api/book_names');
 const router = express.Router();
 
 router.route('/predict').post(predict);
