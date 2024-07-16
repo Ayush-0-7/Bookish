@@ -7,7 +7,7 @@ function App() {
    const [recommendBook,setrecommendBook] = useState([]);
    const [allbook,setallbook] = useState([])
    const handleclick = async() => {
-     const response = await fetch('http://localhost:5000/predict',{
+     const response = await fetch('http://localhost:5000/api/predict',{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -27,7 +27,7 @@ function App() {
    }
    useEffect(() => {
     const fetchBookNames = async () => {
-      const response = await fetch('http://localhost:5000/booknames', {
+      const response = await fetch('http://localhost:5000/api/booknames', {
         method: 'GET',
       });
       if (response.ok) {
