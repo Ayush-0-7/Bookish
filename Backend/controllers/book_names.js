@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 
 module.exports = async (req, res) => {
-  const pythonProcess = spawn('python3', [path.resolve('python/books_names.py')]);
+  const pythonProcess = spawn('python', [path.resolve('python/books_names.py')]);
 
   let dataBuffer = '';
 

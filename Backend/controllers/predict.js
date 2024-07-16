@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = async (req, res) => {
   const { bookName } = req.body;
 
-  const pythonProcess = spawn('python3', [path.resolve('python/predict.py'), bookName]);
+  const pythonProcess = spawn('python', [path.resolve('python/predict.py'), bookName]);
 
   let predictionData = '';
 
