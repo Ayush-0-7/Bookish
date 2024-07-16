@@ -2,14 +2,12 @@ const { spawn } = require('child_process');
 const path = require('path');
 
 module.exports = async (req, res) => {
-  const { bookName } = req.body;
+  const pythonProcess = spawn('python3', [path.resolve('python/books_names.py')]);
 
-  const pythonProcess = spawn('python3', [path.resolve('python/predict.py'), bookName]);
-
-  let predictionData = '';
+  let dataBuffer = '';
 
   pythonProcess.stdout.on('data', (data) => {
-    predictionData += data.toString();
+    dataBuffer += data.toString();
   });
 
   pythonProcess.stderr.on('data', (data) => {
@@ -19,10 +17,11 @@ module.exports = async (req, res) => {
 
   pythonProcess.on('close', (code) => {
     if (code !== 0) {
-      res.status(500).send('Failed to get prediction');
+      res.status(500).send('Failed to get book names');
       return;
     }
-    const predictions = predictionData.trim().split('\n');
-    res.json({ predictions });
+
+    const booknames = dataBuffer.trim().split('\n');
+    res.json({ booknames });
   });
 };
