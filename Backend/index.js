@@ -56,7 +56,10 @@ app.get('/booknames',(req,res)=>{
         res.json({ booknames });
       });
 
-})
+});
+app.get('/',(req,res)=>{
+  res.send("This is working fine.");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
