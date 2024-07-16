@@ -14,7 +14,7 @@ app.post('/predict', (req, res) => {
   const { bookName } = req.body;
 
   // Spawn a child process to run the Python script
-  const pythonProcess = spawn('python', ['python/predict.py', bookName]);
+  const pythonProcess = spawn('python', ['api/predict.py', bookName]);
 
   let predictionData = '';
 
@@ -37,7 +37,7 @@ app.post('/predict', (req, res) => {
   });
 });
 app.get('/booknames',(req,res)=>{
-    const pythonProcess1 = spawn('python', ['python/books_names.py']);
+    const pythonProcess1 = spawn('python', ['api/books_names.py']);
     let dataBuffer = '';
 
     pythonProcess1.stdout.on('data', (data) => {
